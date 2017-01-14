@@ -1,0 +1,12 @@
+.layout-center {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.log {
+  border: 1px solid #888888;
+  background-color: lightgray;
+  padding: 2em;
+  border-radius: 4px;
+  color: #0c6be8;
+}
