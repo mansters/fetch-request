@@ -12,34 +12,33 @@ const REQUEST_HANDLER = {
   [ REQ_TYPE.POST ]: function ( url, data ) {
     return req( url, {
       method: REQ_TYPE.POST,
-      body: StringifyJson( data )
+      body: SerializationArguments( data )
     } );
   },
   [ REQ_TYPE.PUT ]: function ( url, data ) {
     return req( url, {
       method: REQ_TYPE.PUT,
-      body: StringifyJson( data )
+      body: SerializationArguments( data )
     } )
   },
   [ REQ_TYPE.PATCH ]: function ( url, data ) {
     return req( url, {
       method: REQ_TYPE.PATCH,
-      body: StringifyJson( data )
+      body: SerializationArguments( data )
     } )
   },
   [ REQ_TYPE.DELETE ]: function ( url, data ) {
     return req( url, {
       method: REQ_TYPE.DELETE,
-      body: StringifyJson( data )
+      body: SerializationArguments( data )
     } )
   }
 
 };
 
-function StringifyJson ( value ) {
-  return JSON.stringify( value );
-}
-
+// ----------------------------
+// Serialization
+// ----------------------------
 function SerializationParams ( data ) {
   let args = '';
   data.map( ( item ) => {
@@ -51,12 +50,15 @@ function SerializationParams ( data ) {
 }
 
 function SerializationUrl ( url, data ) {
-  let args = `${ url }?`;
+  return `${ url }?${ SerializationParams( data ) }`;
+}
+
+function SerializationArguments ( data ) {
+  let args = {};
   data.map( ( item ) => {
     if ( item.name.length !== 0 ) {
-      args = `${ args + item.name }=${ item.param }&`;
+      args[ item.name ] = item.param;
     }
   } );
-
-  return `${ url }?${ SerializationParams( data ) }`;
+  return JSON.stringify(args);
 }

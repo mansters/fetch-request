@@ -35,7 +35,6 @@ class DynamicFormItem extends Component {
   // ----------------------------
   createDynamicItem = ( list ) => {
     return list.map( ( item, index ) => {
-      console.info( item, index );
       return (
         <div className={ styles[ 'params-row' ] } key={ item.uuid }>
           <InputGroup>

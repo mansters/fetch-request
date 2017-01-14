@@ -106,8 +106,6 @@ class RequestForm extends Component {
     getFieldDecorator( 'args', { initialValue: DEFAULT_FORM_VALUES.args } );
     const args = getFieldValue( 'args' );
 
-    console.log( args );
-
     return (
       <Form horizontal onSubmit={ this.okHandler }>
         {/* Url */}
