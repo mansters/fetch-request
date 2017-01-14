@@ -40,6 +40,16 @@ function StringifyJson ( value ) {
   return JSON.stringify( value );
 }
 
+function SerializationParams ( data ) {
+  let args = '';
+  data.map( ( item ) => {
+    if ( item.name.length !== 0 ) {
+      args = `${ args + item.name }=${ item.param }&`;
+    }
+  } );
+  return args.substr( 0, args.length - 1 );
+}
+
 function SerializationUrl ( url, data ) {
   let args = `${ url }?`;
   data.map( ( item ) => {
@@ -48,5 +58,5 @@ function SerializationUrl ( url, data ) {
     }
   } );
 
-  return args.substring( 0, args.length - 1 );
+  return `${ url }?${ SerializationParams( data ) }`;
 }

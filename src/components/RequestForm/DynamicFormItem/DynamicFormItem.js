@@ -40,10 +40,12 @@ class DynamicFormItem extends Component {
         <div className={ styles[ 'params-row' ] } key={ item.uuid }>
           <InputGroup>
             <Col span="8">
-              <Input defaultValue={ item.name } onChange={ ( e ) => this.editHandler( { ...item, name: e.target.value }, index ) }/>
+              <Input defaultValue={ item.name }
+                     onChange={ ( e ) => this.editHandler( { ...item, name: e.target.value }, index ) }/>
             </Col>
             <Col span="14">
-              <Input defaultValue={ item.param } onChange={ ( e ) => this.editHandler( { ...item, param: e.target.value }, index ) }/>
+              <Input defaultValue={ item.param }
+                     onChange={ ( e ) => this.editHandler( { ...item, param: e.target.value }, index ) }/>
             </Col>
             <Col span="2">
               <Icon
@@ -66,9 +68,9 @@ class DynamicFormItem extends Component {
     return (
       <div>
         { this.createDynamicItem( list ) }
-          <Button type="dashed" onClick={ this.addHandler } style={{ width: '60%' }}>
-            <Icon type="plus" /> Add Fields
-          </Button>
+        <Button type="dashed" onClick={ this.addHandler } style={{ width: '60%' }}>
+          <Icon type="plus"/> Add Fields
+        </Button>
       </div>
     )
   }
